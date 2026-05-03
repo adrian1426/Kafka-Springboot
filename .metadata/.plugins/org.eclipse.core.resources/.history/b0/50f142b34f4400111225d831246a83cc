@@ -1,0 +1,23 @@
+package com.devs4j.kafka.producers;
+
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.Producer;
+
+public class KafkaProducer {
+	public static void main(String[] args) {
+		Properties props=new Properties();
+		props.put("bootstrap.servers","localhost:9092");
+		props.put("acks","all");
+		props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+		props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+		
+		try(Producer<String, String> producer = new DevjProducer<>(props);) {
+			for(inti= 0; i< 100 ;i++) {
+			producer.send(new 
+			ProducerRecord<>("devs4j-topic","key","message"));
+			}
+			producer.flush();
+			}
+	}
+}

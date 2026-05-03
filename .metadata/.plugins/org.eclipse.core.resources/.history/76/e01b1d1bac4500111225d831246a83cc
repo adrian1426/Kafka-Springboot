@@ -1,0 +1,7 @@
+package com.devs4j.kafka.consumers;
+
+public class DevjConsumer {
+	public static void main(String[] args) {
+		
+	}
+}

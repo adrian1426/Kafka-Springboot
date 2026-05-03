@@ -1,0 +1,9 @@
+package com.devs4j.kafka.multithread;
+
+public class Devs4jThreadConsumer extends Thread{
+	
+	@Override
+	public void run() {
+		
+	}
+}

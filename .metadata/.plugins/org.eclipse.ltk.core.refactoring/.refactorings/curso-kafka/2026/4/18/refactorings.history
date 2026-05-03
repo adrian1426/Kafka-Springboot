@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.devs4j.kafka.producers.KafkaProducer&apos; to &apos;DevjProducer&apos;&#x0D;&#x0A;- Original project: &apos;curso-kafka&apos;&#x0D;&#x0A;- Original element: &apos;com.devs4j.kafka.producers.KafkaProducer&apos;&#x0D;&#x0A;- Renamed element: &apos;com.devs4j.kafka.producers.DevjProducer&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;KafkaProducer&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.devs4j.kafka.producers{KafkaProducer.java[KafkaProducer" matchStrategy="1" name="DevjProducer" qualified="false" references="true" similarDeclarations="false" stamp="1777524452593" textual="false" version="1.0"/>
+</session>

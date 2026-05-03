@@ -1,0 +1,8 @@
+package com.devs4j.kafka.consumers;
+
+public class DevjConsumer {
+private void mani() {
+	// TODO Auto-generated method stub
+
+}
+}

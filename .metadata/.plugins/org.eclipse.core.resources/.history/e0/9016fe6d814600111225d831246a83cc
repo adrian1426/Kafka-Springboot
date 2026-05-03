@@ -1,0 +1,26 @@
+package com.devs4j.kafka.multithread;
+
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Devs4jThreadConsumer extends Thread {
+	private static final Logger log = LoggerFactory.getLogger(Devs4jThreadConsumer.class);
+
+	private final KafkaConsumer<String, String> consumer;
+	
+	private final
+
+	public Devs4jThreadConsumer(KafkaConsumer<String, String> consumer) {
+		this.consumer = consumer;
+	}
+
+	@Override
+	public void run() {
+
+	}
+
+	public void shutdown() {
+
+	}
+}

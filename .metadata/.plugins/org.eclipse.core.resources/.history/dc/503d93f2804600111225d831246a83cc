@@ -1,0 +1,12 @@
+package com.devs4j.kafka.multithread;
+
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+
+public class Devs4jThreadConsumer extends Thread{
+	public final KafkaConsumer<String, String> consumer;
+	
+	@Override
+	public void run() {
+		
+	}
+}
