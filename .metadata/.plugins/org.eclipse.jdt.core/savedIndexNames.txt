@@ -3,7 +3,6 @@ INDEX VERSION 1.134+C:\develop\Spring java\Alejandro-Agapito\kafka\.metadata\.pl
 2890254169.index
 817920966.index
 2977105279.index
-1009433289.index
 4084766830.index
 1132340867.index
 3583959884.index
