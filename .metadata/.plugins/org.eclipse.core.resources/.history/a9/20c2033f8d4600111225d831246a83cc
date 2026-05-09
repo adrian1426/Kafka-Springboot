@@ -1,0 +1,7 @@
+package com.devs4j.kafka.multithread;
+
+public class Devs4jMultiThreadConsumer {
+	public static void main(String[] args) {
+		
+	}
+}

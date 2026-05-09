@@ -1,0 +1,7 @@
+package com.devs4j.kafka.transactional;
+
+public class TransactionalConsumer {
+	public static void main(String[] args) {
+		
+	}
+}
