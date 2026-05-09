@@ -26,6 +26,8 @@ class Devs4jCallback implements Callback {
 
 public class Devs4jCallbackProducer {
 
+	private static final Logger log = LoggerFactory.getLogger(Devs4jCallbackProducer.class);
+
 	public static void main(String[] args) {
 		Properties props = new Properties();
 		props.put("bootstrap.servers", "localhost:9092");
@@ -36,8 +38,7 @@ public class Devs4jCallbackProducer {
 
 		try (Producer<String, String> producer = new KafkaProducer<>(props)) {
 			for (int i = 0; i < 1000; i++) {
-				producer.send(new ProducerRecord<>("devs4j-topic", String.valueOf(i), "devs4j-value"),
-						new Devs4jCallback());
+				producer.send(new ProducerRecord<>("devs4j-topic", String.valueOf(i), "devs4j-value"),new Devs4jCallback());
 			}
 
 			producer.flush();
