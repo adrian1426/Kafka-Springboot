@@ -14,7 +14,6 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
 public class KafkaConfiguration {
@@ -45,11 +44,13 @@ public class KafkaConfiguration {
 		return new DefaultKafkaConsumerFactory<>(consumerProperties());
 	}
 
-	@Bean
+	@Bean("listenerContainerFactory")
 	public ConcurrentKafkaListenerContainerFactory<String, String> listenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
 
 		factory.setConsumerFactory(consumerFactory());
+		factory.setBatchListener(true);
+		
 		return factory;
 	}
 

@@ -1,5 +1,6 @@
 package com.devs4j.kafka;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import org.slf4j.Logger;
@@ -20,9 +21,16 @@ public class CursoKafkaSpringApplication implements CommandLineRunner {
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 
-	@KafkaListener(topics = "devs4j-topic", groupId = "devs4j-group")
-	public void listen(String message) {
-		log.info("Message received {}", message);
+	@KafkaListener(topics = "devs4j-topic", containerFactory = "listenerContainerFactory", groupId = "devs4j-group", properties = {
+			"max.poll.interval.ms:4000", "max.poll.records:10" })
+	public void listen(List<String> messages) {
+		log.info("Batch started to read messajes");
+
+		for (String message : messages) {
+			log.info("Message received {}", message);
+		}
+
+		log.info("Batch Completed to read messajes");
 	}
 
 	public static void main(String[] args) {
@@ -31,22 +39,9 @@ public class CursoKafkaSpringApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send("devs4j-topic",
-				"Enviando un mensaje desde Spring framework");
-
-		future.whenComplete((result, ex) -> {
-			if (ex == null) {
-				// ÉXITO (onSuccess)
-				log.info("Enviado con offset: {}" , result.getRecordMetadata().offset());
-			} else {
-				// ERROR (onFailure)
-				// Si necesitas los detalles específicos de Kafka:
-				if (ex instanceof KafkaProducerException kex) {
-					System.err.println("Error en record: " + kex.getFailedProducerRecord());
-				}
-				System.err.println("Causa: " + ex.getMessage());
-			}
-		});
+		for (int i = 0; i < 100; i++) {
+			kafkaTemplate.send("devs4j-topic", String.format("Enviando un mensaje desde Spring framework %d", i));
+		}
 	}
 
 }
