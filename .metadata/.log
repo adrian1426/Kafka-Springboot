@@ -2755,3 +2755,12 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2026-05-13 23:12:54.842
+!MESSAGE Classpath changed for project: curso-kafka-spring
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2026-05-13 23:12:55.119
+!MESSAGE Classpath changed for project: curso-kafka-spring
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2026-05-13 23:12:57.343
+!MESSAGE Classpath changed for project: curso-kafka-spring

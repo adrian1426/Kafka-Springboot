@@ -12,13 +12,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
-import org.springframework.kafka.core.KafkaProducerException;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
+import org.springframework.scheduling.annotation.Scheduled;
+
+import io.micrometer.core.instrument.MeterRegistry;
 
 @SpringBootApplication
 public class CursoKafkaSpringApplication implements CommandLineRunner {
 	private static final Logger log = LoggerFactory.getLogger(CursoKafkaSpringApplication.class);
+	
+	@Autowired
+	private MeterRegistry meterRegistry;
 
 	@Autowired
 	private KafkaListenerEndpointRegistry registry;
@@ -38,6 +42,11 @@ public class CursoKafkaSpringApplication implements CommandLineRunner {
 
 		log.info("Batch Completed to read messajes");
 	}
+	
+	@Scheduled(fixedDelay = 1000,initialDelay = 500)
+	public void print() {
+		log.info("Devs4j logs");
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursoKafkaSpringApplication.class, args);
@@ -45,13 +54,13 @@ public class CursoKafkaSpringApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		for (int i = 0; i < 100; i++) {
-			kafkaTemplate.send("devs4j-topic", String.valueOf(i),
-					String.format("Enviando un mensaje desde Spring framework %d", i));
-		}
-		
-		Thread.sleep(5000);
-		registry.getListenerContainer("devs4jId").start();
+//		for (int i = 0; i < 100; i++) {
+//			kafkaTemplate.send("devs4j-topic", String.valueOf(i),
+//					String.format("Enviando un mensaje desde Spring framework %d", i));
+//		}
+//
+//		Thread.sleep(5000);
+//		registry.getListenerContainer("devs4jId").start();
 	}
 
 }
